@@ -253,76 +253,43 @@ var cars = {
         }
     }
 }
-
-var company = document.getElementById("company")
+var company = document.getElementById("company");
 var brand = document.getElementById("brand");
-var allCars = document.getElementById("allCars");
 
-for (var key in cars) {
+for (var key in cars){
+    key = key.charAt(0).toUpperCase()+key.slice(1);
+    // console.log(key)
     company.innerHTML += `
-        <option value="${key}">${key.charAt(0).toUpperCase() + key.slice(1)}</option>"
+    <option value="${key}">${key}</option>
     `
-    for (var key1 in cars[key]) {
-        for (var key2 in [key][key1]) {
-            for (var key3 in cars[key][key1][key2]) {
-                // allCars.innerHTML = "";
-                console.log(cars[key][key1][key2][key3])
-                
-                allCars.innerHTML += `
-            <div class="col">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">${cars[key][key1][key2][key3].make || "unknown"}</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[key][key1][key2][key3].model}</h6>
-                <h2>RS ${cars[key][key1][key2][key3].year}</h2>
-                </div>
-            </div>
-        `
-            }
-        }
-    }
 }
-
-
-
-function oncompanychange() {
-    brand.innerHTML = "";
-    brand.innerHTML = `<option value="">Choose the model</option>`
-    for (var key1 in cars[company.value]) {
-        for (var key2 in cars[company.value][key1]) {
-            // brand.innerHTML = "";
-            brand.innerHTML += `
-
-            <option value="${key2}">${key2.charAt(0).toUpperCase() + key2.slice(1)}</option>
-            `
-        }
-    }
-}
-
-function filterCars(){
-    console.log(company.value, brand.value)
-}
-
-
-
-
-
-// for (var key in cars) {
-//     for (var key1 in cars[key]) {
-//         for (var key2 in cars[key][key1]) {
+// for (key in cars){
+//     for (key1 in cars[key]){
+//         for (key2 in cars[key][key1]){
 //             console.log(key2)
-//             allCars.innerHTML += `
-//             <div class="col p-4">
-//                       <div class="card" style="width: 18rem;">
-//                            <div class="card-body">
-//                              <h5 class="card-title">${key2}</h5>
-//                              <h6 class="card-subtitle mb-2 text-body-secondary">${key2}</h6>
-//                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-//                              <a href="#" class="card-link">Card link</a>
-//                              <a href="#" class="card-link">Another link</a>
-//                            </div>
-//                          </div>
-//             `
 //         }
 //     }
+// // }
+// for (var key1 in cars) {
+//     // Iterate through the models of the current brand
+//     for (var model in cars[key1].model) {
+//         // Access the "make" property directly
+//         var makeValue = cars[key1].model[model].make;
+//         console.log(model)
+//     }
 // }
+
+function showCars(){   
+    // brand.innerHTML="";
+    brand.innerHTML = `<option selected>Choose the model</option>`
+     
+    for(var model in cars[company.value]) {
+        
+        for (var name in cars[company.value][model]){
+            brand.innerHTML += `
+            <option value="${name}">${name.toUpperCase()}</option>
+            `
+            console.log(name);
+        }
+    }   
+}

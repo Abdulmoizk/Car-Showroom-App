@@ -3,26 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
     ">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/logo.png">
+    
     <title>MS AUTOS</title>
 </head>
 <body>
-    <nav class="navbar p-8">
+    <!-- <nav class="navbar p-8">
         <div class="container-fluid">
           <a class="navbar-brand " href="#">
             <img src="images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             MS AUTOS
           </a>
-          <form class="" role="search">
-            <select class="form-control me-2 col-2" name="" id="company" onclick="dropdown()"><option value="">Choose a car</option></select>
-            <select class="form-control me-2 col-2" name="" id="model"></select>
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+          
+            <select class="form-select" id="company" onchange="oncompanychange()" aria-label="Default select example">
+                <option selected>Choose Your Company</option>
+              </select>
+              <select id="brand" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+              </select>
+            <button class="btn btn-primary" onclick="filterCars()" type="submit">Search</button>
+           
         </div>
-      </nav>
+      </nav> -->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand">MS AUTOS</a>
+            <div class="d-flex">
+                <select id="company" class="form-select me-2" onchange="oncompanychange()" aria-label="Default select example">
+                    <option selected>Choose the company</option>
+                </select>
+                <select id="brand" class="form-select me-2" aria-label="Default select example">
+                    <option selected>Choose the model</option>
+                </select>
+                <button class="btn" type="submit">Find</button>
+
+            </div>
+        </div>
+    </nav>
+      <div class="row p-4" id="allCars">
+        
+        </div>
+      </div>
 
     <script src="app.js"></script>
 </body>
