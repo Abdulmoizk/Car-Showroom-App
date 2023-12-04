@@ -265,38 +265,66 @@ for (var key in cars) {
     for (var key1 in cars[key]) {
         for (var key2 in cars[key][key1]) {
             // for (var key3 in cars[key][key1][key2]) {
-                console.log(cars[key][key1][key2])
+            // console.log(cars[key][key1][key2])
 
-                allCars.innerHTML += `
+            allCars.innerHTML += `
             <div class="col mb-4">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
-                <h2 class="card-title">${cars[key][key1][key2].make}</h2>
-                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[key][key1][key2].model}</h6>
+                <h2 class="card-title">${cars[key][key1][key2].model}</h2>
+                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[key][key1][key2].make}</h6>
                 <h6>${cars[key][key1][key2].year}</h6>
                 </div>
             </div>
         `
-            }
+
         }
     }
+
+}
 // }
 
 
 function oncompanychange() {
     brand.innerHTML = "";
+    allCars.innerHTML = ""
     brand.innerHTML = `<option value="">Choose the model</option>`
     for (var key1 in cars[company.value]) {
         for (var key2 in cars[company.value][key1]) {
             // brand.innerHTML = "";
             brand.innerHTML += `
-
             <option value="${key2}">${key2.charAt(0).toUpperCase() + key2.slice(1)}</option>
             `
+          
+            allCars.innerHTML += `
+            <div class="col mb-4">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h2 class="card-title">${cars[company.value][key1][key2].model}</h2>
+                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[company.value][key1][key2].make}</h6>
+                <h6>${cars[company.value][key1][key2].year}</h6>
+                </div>
+            </div>
+            `
+            console.log(cars[company.value][key1][key2])
         }
     }
 }
 
 function filterCars() {
-    console.log(company.value, brand.value)
+    allCars.innerHTML = ""
+    for (var key1 in cars[company.value]) {
+        for (var key2 in cars[company.value][key1]) { 
+            allCars.innerHTML += `
+            <div class="col mb-4">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h2 class="card-title">${cars[company.value][key1][key2].model}</h2>
+                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[company.value][key1][key2].make}</h6>
+                <h6>${cars[company.value][key1][key2].year}</h6>
+                </div>
+            </div>
+            `
+        }
+    }
 }
