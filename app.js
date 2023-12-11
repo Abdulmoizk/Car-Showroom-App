@@ -306,25 +306,33 @@ function oncompanychange() {
                 </div>
             </div>
             `
-            console.log(cars[company.value][key1][key2])
+            // console.log(cars[company.value][key1][key2])
         }
     }
 }
 
 function filterCars() {
     allCars.innerHTML = ""
-    for (var key1 in cars[company.value]) {
-        for (var key2 in cars[company.value][key1]) { 
-            allCars.innerHTML += `
-            <div class="col mb-4">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h2 class="card-title">${cars[company.value][key1][key2].model}</h2>
-                <h6 class="card-subtitle mb-2 text-body-secondary">${cars[company.value][key1][key2].make}</h6>
-                <h6>${cars[company.value][key1][key2].year}</h6>
-                </div>
-            </div>
-            `
-        }
-    }
+ let cardata = cars[company.value].model[brand.value];
+   
+    allCars.innerHTML += `
+    <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h2 class="card-title">${cardata.model}</h2>
+        <h6 class="card-subtitle mb-2 text-body-secondary">${cardata.make}</h6>
+        <h6>${cardata.year}</h6>
+        </div>
+    </div>`
+
+
+
+
+    // for (var key1 in cars[company.value]) {
+    //     for (var key2 in cars[company.value][key1]) { 
+    //         console.log(cars[company.value][key1][key2])
+           
+    //         `
+    //     }
+    // }
 }
